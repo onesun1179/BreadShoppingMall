@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.d
+<html xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<link rel="apple-touch-icon" href="이미지경로.png" />
+<script type="text/javascript">
+<!--
+// 주소창 자동 닫힘
+window.addEventListener("load", function(){
+setTimeout(loaded, 100);
+}, false);
+function loaded(){
+window.scrollTo(0, 1);
+}
+</script>
+</head>
+<html>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+  <div>
+    <center>
+      <form name="loginf" id="login" action="member_login.jsp" method="post">
+        <div id="container1">
+          <h3>로그인</h3>
+          <li><input class="text" type="text" placeholder="아이디" name="loginID" id="loginID" /></li>
+          <li><input class="text" type="password" placeholder="비밀번호" name="loginPWD" id="loginPWD" /></li>
+          <a href="javascript:login_check()" class="button">로그인</a>
+        </div>
+      </form>
+      <form name="joif" id="join" action="member_join.jsp" method="post">
+        <div id="container2">
+          <h3>회원가입</h3>
+          <li><input class="text" type="text" placeholder="아이디" name="joinID" id="joinID" /><span>4~12자리 입력</span></li>
+          <li><input class="text" type="password" placeholder="비밀번호" name="joinPWD" id="joinPWD" /><span>4~12자리 입력</span></li>
+          <li><input class="text" type="password" placeholder="비밀번호 확인" id="joinPWDCheck" /></li>
+          <a href="javascript:join_check()" class="button2">회원가입</a>
+        </div>
+      </form>
+    </center>
+  </div>
+</body>
+
+</html>
+<script>
+  function join_check() {
+    if (document.getElementById("joinID").value.length < 4 || document.getElementById("joinID").value.length > 12) {
+      document.getElementById("joinID").value = "";
+      document.getElementById("joinID").focus();
+      input_backgroundColor_reset();
+      document.getElementById("joinID").style.backgroundColor = "red";
+
+      return false;
+    } else if (document.getElementById("joinPWD").value.length < 4 || document.getElementById("joinPWD").value.length > 12) {
+      document.getElementById("joinPWD").value = "";
+      document.getElementById("joinPWDCheck").value = "";
+      document.getElementById("joinPWD").focus();
+      input_backgroundColor_reset()
+      document.getElementById("joinPWD").style.backgroundColor = "red";
+      document.getElementById("joinPWDCheck").style.backgroundColor = "red";
+      return false;
+    } else if (document.getElementById("joinPWD").value != document.getElementById("joinPWDCheck").value) {
+      document.getElementById("joinPWD").value = "";
+      document.getElementById("joinPWDCheck").value = "";
+      document.getElementById("joinPWD").focus();
+      input_backgroundColor_reset()
+      document.getElementById("joinPWD").style.backgroundColor = "red";
+      document.getElementById("joinPWDCheck").style.backgroundColor = "red";
+
+      return false;
+    } else {
+      document.getElementById('join').submit();
+    }
+  }
+
+  function login_check() {
+    document.getElementById('login').submit();
+  }
+  function input_backgroundColor_reset() {
+    document.getElementById("joinID").style.backgroundColor = "white";
+    document.getElementById("joinPWD").style.backgroundColor = "white";
+    document.getElementById("joinPWDCheck").style.backgroundColor = "white";
+  }
+</script>
+<style>
+  body > * {
+    margin : 0;
+  }
+  input.text {
+    height: 30%;
+    width: 100%;
+    font-size: 1.3em;
+    float: left;
+
+    border-radius: 8px;
+  }
+
+  input.text:focus {
+    background-color: silver;
+  }
+
+  div[id*="container"] {
+    margin: 0px;
+    width : 50%;
+    border-color: red;
+  }
+
+  li span {
+    display: inline;
+    text-align: left;
+    height : 100%;
+    width : 100%;
+  }
+  body {
+    overflow: hidden;
+  }
+  @media ( max-width: 768px ) {
+    div[id*="container"] {
+      width : 100%;
+    }
+  }
+
+
+
+  div#container2 span {
+    float: left;
+    margin-left: 10px;
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    float: left;
+    width: 50%;
+    margin: 10px;
+  }
+
+  form>div {
+    margin: 0px;
+    float: left;
+    display: block;
+    border-style: solid;
+    height: 100%;
+    width: 70%;
+    position: relative;
+  }
+
+  body {
+    background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -86px;
+    margin-left: -89px;
+    text-align: center;
+  }
+
+  a {
+    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    margin: 10px;
+    max-width: 180px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px 30px;
+    position: absolute;
+  }
+
+  a.button {
+    right: 0;
+    bottom: 0;
+    color: rgba(30, 22, 54, 0.6);
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+  }
+
+  a.button:hover {
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+  }
+
+  a.button2 {
+    right: 0;
+    bottom: 0;
+    color: rgba(30, 22, 54, 0.6);
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+  }
+
+  a.button2:hover {
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
+  }
+</style>

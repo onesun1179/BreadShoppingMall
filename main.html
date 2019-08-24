@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+</head>
+
+<body>
+  <div class="menu_btn"><a href="#" id="menu_open">메뉴</a></div>
+  <div class="side_menu" id="side_menu" style="left:-250px">
+    <ul class="side_list">
+      <li><a href="#" id="menu_close">닫기</a></li>
+      <li><a href="링크주소1">메뉴1</a></li>
+      <li><a href="링크주소2">메뉴2</a></li>
+    </ul>
+  </div>
+</body>
+
+</html>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+
+$(document).ready(function(){
+
+
+$('#menu_open').click(function(){
+
+$('#side_menu').animate({left:'0'}, 500);
+
+});
+
+$('#menu_close').click(function(){
+
+$('#side_menu').animate({left:'-250px'}, 500);
+
+});
+
+});
+function join_output() {
+  var url = "test.html";
+  var name = "로그인";
+  var option = "width = 850, height = 350, top = 50%, left = 200, location = no, toolbar=0, menubar=no, fullscreen = 0";
+  window.open(url, name, option);
+}
+
+
+</script>

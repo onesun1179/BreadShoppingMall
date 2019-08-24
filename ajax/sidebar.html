@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="./sidebar.js"></script>
+      <link href='assets/menu.css' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <div class='section'><h3 class="title">관대빵</h3></div>
+      <div class='section'>
+        <nav id=default_nav>
+          <ul id="default_ul">
+            <li style="color:black;" id="login_li">
+              <span class="support_title" style="color:#A0522D;">login</span>
+              <form class="submit_form" name="login" id="login" action="./jsp/member_login.jsp" method="post">
+                <div id="login_text_div" class="text_div">
+                  <input class="text" type="text" placeholder="아이디" name="loginID" id="loginID" />
+                  <input class="text" type="password" placeholder="비밀번호" name="loginPWD" id="loginPWD" />
+                </div>
+                <div>
+                  <button type="button" onclick="login_check()" class="submit_button" id="login_button">로그인</button>
+                </div>
+              </form>
+            </li>
+            <li style="color:black;" id="join_li">
+              <span class="support_title" style="color:#A0522D;">join</span>
+              <form class="submit_form" name="join" id="join" action="./jsp/member_join.jsp" method="post">
+                <div id="join_text_div" class="text_div">
+                  <input class="text" type="text" placeholder="아이디" name="joinID" id="joinID" />
+                  <input class="text" type="password" placeholder="비밀번호" name="joinPWD" id="joinPWD" />
+                  <input class="text" type="password" placeholder="비밀번호 확인" name="joinPWDCheck" id="joinPWDCheck" />
+                </div>
+                <div>
+                  <button type="button" onclick="join_check()" class="submit_button" id="join_button">회원가입</button>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div id='shopping_section'>
+
+
+      </div>
+      
+      <!-- <iframe id='shopping_cart' name='bread_list' src='./jsp/shopping_cart.jsp' style='border-style:solid; border-color:red; height:100%px; width:100%'></iframe> -->
+      <!--
+      <nav>
+        <ul>
+          <li class='close-sb'>
+            <a href='#'>Link (  w)</a>
+          </li>
+          <li>Not a link (wo)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li class='close-sb'>Not a link (w)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li>Not a link (wo)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li>Not a link (wo)</li>
+          <li class='close-sb'>
+            <a href='#'>Link (w)</a>
+          </li>
+          <li class='close-sb'>Not a link (w)</li>
+          <li class='close-sb'>
+            <a href='#'>Link (w)</a>
+          </li>
+          <li class='close-sb'>Not a link (w)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li>Not a link (wo)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li class='close-sb'>Not a link (w)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li class='close-sb'>Not a link (w)</li>
+          <li>
+            <a href='#'>Link (wo)</a>
+          </li>
+          <li class='close-sb'>Not a link (w)</li>
+        </ul>
+      </nav>
+      -->
+  </body>
+</html>
+
+
+<script>
+function reset() {
+  bread_list.location.reload();
+
+}
+  function join_check() {
+    if (document.getElementById("joinID").value.length < 4 || document.getElementById("joinID").value.length > 12) {
+      document.getElementById("joinID").value = "";
+      document.getElementById("joinID").focus();
+      input_backgroundColor_reset();
+      document.getElementById("joinID").style.backgroundColor = "red";
+      return false;
+    } else if (document.getElementById("joinPWD").value.length < 4 || document.getElementById("joinPWD").value.length > 12) {
+      document.getElementById("joinPWD").value = "";
+      document.getElementById("joinPWDCheck").value = "";
+      document.getElementById("joinPWD").focus();
+      input_backgroundColor_reset()
+      document.getElementById("joinPWD").style.backgroundColor = "red";
+      document.getElementById("joinPWDCheck").style.backgroundColor = "red";
+      return false;
+    } else if (document.getElementById("joinPWD").value != document.getElementById("joinPWDCheck").value) {
+      document.getElementById("joinPWD").value = "";
+      document.getElementById("joinPWDCheck").value = "";
+      document.getElementById("joinPWD").focus();
+      input_backgroundColor_reset()
+      document.getElementById("joinPWD").style.backgroundColor = "red";
+      document.getElementById("joinPWDCheck").style.backgroundColor = "red";
+      return false;
+    } else {
+      document.getElementById('join').submit();
+    }
+  }
+  function login_check() {
+    document.getElementById('login').submit();
+  }
+  function input_backgroundColor_reset() {
+    document.getElementById("joinID").style.backgroundColor = "white";
+    document.getElementById("joinPWD").style.backgroundColor = "white";
+    document.getElementById("joinPWDCheck").style.backgroundColor = "white";
+  }
+  function getParam(key){
+          var _parammap = {};
+          document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+              function decode(s) {
+                  return decodeURIComponent(s.split("+").join(" "));
+              }
+
+              _parammap[decode(arguments[1])] = decode(arguments[2]);
+          });
+
+          return _parammap[key];
+  };
+  var connect_url = getParam("id");
+
+  if(connect_url != undefined || connect_url != null) {
+    document.getElementById("default_nav").innerHTML = "";
+
+    var div = document.createElement("div");
+    div.innerHTML = connect_url + "님 어서오세요.";
+    div.innerHTML += "<button onclick='logout()' id='logout_button'>로그아웃</button>";
+    document.getElementById('default_nav').appendChild(div);
+
+    
+
+
+  }
+  function logout() {
+    location.href="sliderTest.jsp";
+  }
+
+</script>
